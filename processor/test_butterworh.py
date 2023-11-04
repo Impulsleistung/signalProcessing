@@ -21,7 +21,7 @@ cutoff_frequency = 1500  # Cutoff frequency for the low-pass filter
 order = 6  # Order of the filter
 
 # Get the filter coefficients
-b, a = butter(order, cutoff_frequency / (0.5 * fs), btype='low')
+b, a = butter(order, cutoff_frequency / (0.5 * fs), btype="low")
 
 # Apply the zero-phase filter to the distorted signal to get the zero-phase output signal
 zero_phase_output_signal = filtfilt(b, a, distorted_signal)
@@ -30,30 +30,32 @@ zero_phase_output_signal = filtfilt(b, a, distorted_signal)
 zero_phase_error_signal = distorted_signal - zero_phase_output_signal
 
 # Set the style to dark background for plotting
-plt.style.use('dark_background')
+plt.style.use("dark_background")
 
 # Plot everything with zero-phase filtering
 fig, ax = plt.subplots(3, 1, figsize=(15, 12), sharex=True)
 
 # Input signal
-ax[0].plot(t, distorted_signal, label='Input Signal')
-ax[0].set_title('Input Signal (Distorted Sinusoid)')
-ax[0].set_ylabel('Amplitude')
+ax[0].plot(t, distorted_signal, label="Input Signal")
+ax[0].set_title("Input Signal (Distorted Sinusoid)")
+ax[0].set_ylabel("Amplitude")
 ax[0].grid(True)
 ax[0].legend()
 
 # Zero-phase output signal
-ax[1].plot(t, zero_phase_output_signal, label='Zero-phase Output Signal', color='orange')
-ax[1].set_title('Zero-phase Output Signal (Filtered Sinusoid)')
-ax[1].set_ylabel('Amplitude')
+ax[1].plot(
+    t, zero_phase_output_signal, label="Zero-phase Output Signal", color="orange"
+)
+ax[1].set_title("Zero-phase Output Signal (Filtered Sinusoid)")
+ax[1].set_ylabel("Amplitude")
 ax[1].grid(True)
 ax[1].legend()
 
 # Zero-phase error signal
-ax[2].plot(t, zero_phase_error_signal, label='Zero-phase Error Signal', color='green')
-ax[2].set_title('Zero-phase Error Signal (Difference Signal)')
-ax[2].set_xlabel('Time [s]')
-ax[2].set_ylabel('Amplitude')
+ax[2].plot(t, zero_phase_error_signal, label="Zero-phase Error Signal", color="green")
+ax[2].set_title("Zero-phase Error Signal (Difference Signal)")
+ax[2].set_xlabel("Time [s]")
+ax[2].set_ylabel("Amplitude")
 ax[2].grid(True)
 ax[2].legend()
 
